@@ -13,6 +13,10 @@ public class AccountConfiguration {
         return new Account(user);
     }
 
+    public Account createCheckingAccount(Account account) {
+        return new SavingsAccount(account);
+    }
+
 
 
 }
