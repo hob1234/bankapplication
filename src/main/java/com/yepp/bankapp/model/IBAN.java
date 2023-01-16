@@ -1,4 +1,4 @@
-package com.yepp.bankapp;
+package com.yepp.bankapp.model;
 
 import org.springframework.stereotype.Component;
 

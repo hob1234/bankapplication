@@ -1,4 +1,4 @@
-package com.yepp.bankapp;
+package com.yepp.bankapp.model;
 
 import org.springframework.stereotype.Component;
 
@@ -8,12 +8,12 @@ import java.util.List;
 public class Account {
 
     private User user;
-    private IBAN IBAN;
+    private com.yepp.bankapp.model.IBAN IBAN;
 
     private List<BankStatement> bankStatements;
 
 //    @Bean
-    Account(User user) {
+public Account(User user) {
         this.user = user;
         this.IBAN = new IBAN();
     }
