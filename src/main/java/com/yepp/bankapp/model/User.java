@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
 public class User {
     private String name;
     private String lastName;
-    private float balance;
+//    private float balance;
 }

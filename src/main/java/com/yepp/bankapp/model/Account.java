@@ -8,9 +8,12 @@ import java.util.List;
 public class Account {
 
     private User user;
-    private com.yepp.bankapp.model.IBAN IBAN;
+    private IBAN IBAN;
 
-    private List<BankStatement> bankStatements;
+    private float balance;
+
+
+//    private List<Transaction> transactions;
 
 //    @Bean
 public Account(User user) {
@@ -18,9 +21,9 @@ public Account(User user) {
         this.IBAN = new IBAN();
     }
 
-    public void addBankStatement(BankStatement bankStatement) {
-        this.bankStatements.add(bankStatement);
-    }
+//    public void addBankStatement(Transaction transaction) {
+//        this.transactions.add(transaction);
+//    }
 //
 //    public float getBalance() {
 //        return balance;
