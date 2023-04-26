@@ -1,25 +1,47 @@
 package com.yepp.bankapp.model;
 
-import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
-import java.util.List;
-
-@Component
+@Entity
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    Integer id;
 
-    private User user;
-    private IBAN IBAN;
+    @Embedded
+    private IBAN iban;
 
     private float balance;
 
+    @JsonBackReference
+    @ManyToOne()
+    private User user;
 
+    public Account(User user) {
+        this.iban = new IBAN();
+        this.user = user;
+    }
+
+    public Account() {}
+
+    public Integer getId() {
+        return id;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
 //    private List<Transaction> transactions;
 
 //    @Bean
-public Account(User user) {
-        this.user = user;
-        this.IBAN = new IBAN();
-    }
 
 //    public void addBankStatement(Transaction transaction) {
 //        this.transactions.add(transaction);
@@ -45,13 +67,14 @@ public Account(User user) {
 //        this.name = name;
 
 
-    private void deposit(){
+//    private void deposit(){
+//
+//    }
+//
+//    private void transfer() {}
 
-    }
-
-    private void transfer() {}
-
-    public String getIBAN() {
-        return this.IBAN.getIBAN();
+    public User getUser() {return this.user;}
+    public String getIban() {
+        return this.iban.getIban();
     }
 }

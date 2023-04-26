@@ -1,15 +1,15 @@
 package com.yepp.bankapp.model;
 
-import org.springframework.stereotype.Component;
+import jakarta.persistence.Embeddable;
 
-@Component
+@Embeddable
 public class IBAN {
-    private final String IBAN;
+    private String iban;
 
     private static int ibanCounter = 0;
 
-    IBAN() {
-        this.IBAN = generateIban();
+    public IBAN() {
+        this.iban = generateIban();
     }
 
     private String generateIban() {
@@ -20,7 +20,7 @@ public class IBAN {
         return ibanStart + "0".repeat(10 - ibanNum.length());
     }
 
-    public String getIBAN() {
-        return IBAN;
+    public String getIban() {
+        return iban;
     }
 }

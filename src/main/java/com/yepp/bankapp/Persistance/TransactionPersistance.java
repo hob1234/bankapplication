@@ -1,15 +1,14 @@
 package com.yepp.bankapp.Persistance;
 
-import com.yepp.bankapp.model.IBAN;
 import com.yepp.bankapp.model.Transaction;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class TransactionPersistance {
+@Repository
+public interface TransactionPersistance extends JpaRepository<Transaction, Integer> {
+    List<Transaction> findTransactionsBySenderId(final Integer id);
 
-    final ArrayList<Transaction> transactions = new ArrayList<>();
-    public List<Transaction> listTransactions(final IBAN iban) {
-        return transactions.stream().filter(transaction -> transaction.getReceiver().equals(iban)).toList();
-    }
+    Transaction findTransactionById(final Integer id);
 }
